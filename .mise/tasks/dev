@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# mise description="run the backend"
+set -euxo pipefail
+
+cd Backend
+docker-compose  -f deploy/docker-compose.yml -f deploy/docker-compose.otlp.yml -f deploy/docker-compose.dev.yml --project-directory . up --build
