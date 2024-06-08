@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "Backend",
         "Svelte",
-        "Astro"
+        "Astro",
+        "Database"
     ]
 }
