@@ -1,14 +1,5 @@
 # Gebwai
 
-## Dev Style
-โปรเจ็คนี้เราจะเลือกของที่ promising แต่อาจจะไม่ mature มาใช้ ถือว่าเป็นการ Exploration tools กับ Stack ใหม่ๆ
-ใครอยากใช้ อยากลอง Rewrite Backend Frontend แบบไหนเชิญเลย
-
-### Default Stack
-- SvelteKit 5 
-- SurrealDB
-
-Deploy on Bare-Metal
 
 ## Features
 
@@ -28,7 +19,7 @@ To get started, you need to have the following tools installed:
 
 ### ทุนิยกตัญญูตา - Compassionate Capitalism 
 > a Codustry Pilot Project by Nutchanon Ninyawee(Ben)
-ขอบคุณด้วยเงิน มีน้อยแบ่งน้อยมีมากแบ่งมาก แบ่งเงินกำไรส่วนหนึ่งให้กับ Contributors, Security Auditors🛡🔐 และ Upstream Dependency Orgs ในระยะแรกเบนจะตัดสินใจชั่งน้ำหนักส่วนแบ่งให้
+ขอบคุณด้วยเงิน มีน้อยแบ่งน้อยมีมากแบ่งมาก แบ่งเงินกำไรส่วนหนึ่งให้กับ Contributors, Security Auditors🛡🔐 และ Upstream Dependency Orgs ในระยะแรก Author จะตัดสินใจชั่งน้ำหนักส่วนแบ่งให้
 [AI](https://www.perplexity.ai/search/could-you-advice-tjFxIvpvS8GAJSPaiihBvg)
 
 
