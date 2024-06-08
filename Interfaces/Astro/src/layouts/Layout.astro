@@ -1,0 +1,38 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="lofi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="แชตบอท บน ไลน์ เก็บรูป, วิดิโอ, และ ไฟล์ อัตโนมัติ, จะไม่มีปัญหาไฟล์หมดอายุ อีกต่อไป" />
+		<meta name="keywords" content="ไลน์, Line, Google Drive, ไฟล์บนไลน์หมดอายุ, เก็บไฟล์บนไลน์อัตโนมัติ" />
+
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155723828-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "UA-155723828-2");
+		</script> -->
+
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
