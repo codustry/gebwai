@@ -1,5 +1,7 @@
 {
     "conventionalCommits.scopes": [
-        "Backend"
+        "Backend",
+        "Svelte",
+        "Astro"
     ]
 }
