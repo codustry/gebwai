@@ -1,0 +1,81 @@
+version: '3.9'
+
+services:
+  api: &main_app
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+      target: prod
+    image: gebwai:${GEBWAI_VERSION:-latest}
+    restart: always
+    env_file:
+      - .env
+    labels:
+      # Enables traefik for this container.
+      - traefik.enable=true
+      - traefik.http.routers.gebwai.rule=Host(`${GEBWAI_TRAEFIK_HOST:-gebwai.localhost}`)
+      - traefik.http.routers.gebwai.entrypoints=http
+      - traefik.http.routers.gebwai.service=gebwai
+      - traefik.http.services.gebwai.loadbalancer.server.port=${GEBWAI_PORT:-8000}
+    networks:
+      - default
+      - traefik-shared
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      GEBWAI_HOST: 0.0.0.0
+      GEBWAI_DB_HOST: gebwai-db
+      GEBWAI_DB_PORT: 5432
+      GEBWAI_DB_USER: gebwai
+      GEBWAI_DB_PASS: gebwai
+      GEBWAI_DB_BASE: gebwai
+
+  taskiq-worker:
+    <<: *main_app
+    labels: []
+    command:
+      - taskiq
+      - worker
+      - gebwai.tkq:broker
+
+  db:
+    image: postgres:13.8-bullseye
+    hostname: gebwai-db
+    environment:
+      POSTGRES_PASSWORD: "gebwai"
+      POSTGRES_USER: "gebwai"
+      POSTGRES_DB: "gebwai"
+    volumes:
+      - gebwai-db-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: pg_isready -U gebwai
+      interval: 2s
+      timeout: 3s
+      retries: 40
+
+  migrator:
+    image: gebwai:${GEBWAI_VERSION:-latest}
+    restart: "no"
+    command: alembic upgrade head
+    environment:
+      GEBWAI_DB_HOST: gebwai-db
+      GEBWAI_DB_PORT: 5432
+      GEBWAI_DB_USER: gebwai
+      GEBWAI_DB_PASS: gebwai
+      GEBWAI_DB_BASE: gebwai
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+
+volumes:
+  gebwai-db-data:
+    name: gebwai-db-data
+
+networks:
+  # Network for traefik.
+  traefik-shared:
+    name: traefik-shared
