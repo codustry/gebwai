@@ -3,6 +3,7 @@
         "Backend",
         "Svelte",
         "Astro",
-        "Database"
+        "Database",
+        "Design"
     ]
 }

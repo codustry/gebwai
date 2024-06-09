@@ -1,2 +1,4 @@
 /.env*
 Backend/PythonFirst
+
+Deployment/cloudflare_tunnel_config.yml
