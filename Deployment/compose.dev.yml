@@ -1,0 +1,18 @@
+services:
+  api:
+    ports:
+      # Exposes application port.
+    - "8000:8000"
+    build:
+      target: dev
+    volumes:
+      # Adds current directory as volume.
+    - .:/app/src/
+    environment:
+      # Enables autoreload.
+      GEBWAI_RELOAD: "True"
+
+  db:
+    ports:
+      - "5432:5432"
+

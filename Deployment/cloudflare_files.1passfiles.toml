@@ -1,0 +1,7 @@
+[[file]]
+path = "$HOME/.cloudflared/dcd64c02-fa10-4051-a50e-30dc8d761420.json"
+op_url = "op://gebwai-mine/tunnel creds file/dcd64c02-fa10-4051-a50e-30dc8d761420.json"
+
+[[file]]
+path = "$HOME/.cloudflared/cert.pem"
+op_url = "op://gebwai-mine/e45urdpqsjol6cfq5qlta44ao4/cert.pem"

@@ -1,0 +1,50 @@
+# please run at project root directory
+# e.g. `docker-compose -p gebwai -f Deployment/compose.yml --project-directory . {self.verb} --build`
+
+services:
+  web:
+    build: 
+      context: Interfaces/Astro
+    ports:
+      - "80:80"
+
+  db:
+    image: postgres:16
+    hostname: gebwai-db
+    environment:
+      POSTGRES_PASSWORD: "gebwai"
+      POSTGRES_USER: "gebwai"
+      POSTGRES_DB: "gebwai"
+    volumes:
+    - gebwai-db-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: pg_isready -U gebwai
+      interval: 2s
+      timeout: 3s
+      retries: 40
+
+  api:
+    build:
+      context: Backend/FastAPI-Python
+      target: prod
+    image: gebwai:${GEBWAI_VERSION:-latest}
+    restart: always
+    env_file:
+    - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      GEBWAI_HOST: 0.0.0.0
+      GEBWAI_DB_HOST: gebwai-db
+      GEBWAI_DB_PORT: 5432
+      GEBWAI_DB_USER: gebwai
+      GEBWAI_DB_PASS: gebwai
+      GEBWAI_DB_BASE: gebwai
+
+volumes:
+  gebwai-db-data:
+    name: gebwai-db-data
+    external: true
+

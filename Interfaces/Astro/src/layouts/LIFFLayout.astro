@@ -16,7 +16,7 @@ import { SEO } from "astro-seo";
 <html lang="en" data-theme="lofi">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
 		<SEO
 			title={title}
@@ -62,6 +62,8 @@ import { SEO } from "astro-seo";
 
 			gtag("config", "UA-155723828-2");
 		</script> -->
+
+		<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	</head>
 	<body>
 		<slot />
