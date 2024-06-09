@@ -26,7 +26,7 @@ router = APIRouter()
 configuration = Configuration(access_token=settings.LINE_ACCESS_TOKEN)
 async_api_client = AsyncApiClient(configuration)
 line_bot_api = AsyncMessagingApi(async_api_client)
-handler = WebhookHandler(settings.LINE_SECRET)
+handler = WebhookHandler(settings.LINE_CHANNEL_SECRET)
 parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
 
 @router.post("/callback")

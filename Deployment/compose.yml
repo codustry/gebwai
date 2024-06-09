@@ -6,6 +6,7 @@ services:
     build: 
       context: Interfaces/Astro
       target: prod
+    image: gebwai-astro:${BACKEND_VERSION:-latest}
     ports:
       - "4321:4321"
 
@@ -31,7 +32,7 @@ services:
     build:
       context: Backend/Python
       target: prod
-    image: gebwai-python:${GEBWAI_VERSION:-latest}
+    image: gebwai-python:${BACKEND_VERSION:-latest}
     restart: always
     env_file:
     - .env
@@ -39,12 +40,12 @@ services:
       db:
         condition: service_healthy
     environment:
-      GEBWAI_HOST: 0.0.0.0
-      GEBWAI_DB_HOST: gebwai-db
-      GEBWAI_DB_PORT: 5432
-      GEBWAI_DB_USER: gebwai
-      GEBWAI_DB_PASS: gebwai
-      GEBWAI_DB_BASE: gebwai
+      BACKEND_HOST: 0.0.0.0
+      BACKEND_DB_HOST: gebwai-db
+      BACKEND_DB_PORT: 5432
+      BACKEND_DB_USER: gebwai
+      BACKEND_DB_PASS: gebwai
+      BACKEND_DB_BASE: gebwai
 
 volumes:
   gebwai-db-data:

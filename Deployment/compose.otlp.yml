@@ -2,7 +2,7 @@ services:
   api:
     environment:
       # Adds opentelemetry endpoint.
-      GEBWAI_OPENTELEMETRY_ENDPOINT: "http://otel-collector:4317"
+      BACKEND_OPENTELEMETRY_ENDPOINT: "http://otel-collector:4317"
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib:0.53.0

@@ -1,0 +1,11 @@
+tunnel: dcd64c02-fa10-4051-a50e-30dc8d761420
+credentials-file: /home/din/.cloudflared/dcd64c02-fa10-4051-a50e-30dc8d761420.json
+
+ingress:
+  - hostname: dcd64c02.gebwai.com
+    path: api
+    url: http://api:8000
+  - hostname: dcd64c02.gebwai.com
+    url: http://web:4321
+  
+

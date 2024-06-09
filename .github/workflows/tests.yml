@@ -102,6 +102,6 @@ jobs:
     - name: Run pytest check
       run: poetry run pytest -vv --cov="gebwai" Backend/
       env:
-        GEBWAI_HOST: "0.0.0.0"
-        GEBWAI_DB_HOST: localhost
-        GEBWAI_KAFKA_BOOTSTRAP_SERVERS: '["localhost:9092"]'
+        BACKEND_HOST: "0.0.0.0"
+        BACKEND_DB_HOST: localhost
+        BACKEND_KAFKA_BOOTSTRAP_SERVERS: '["localhost:9092"]'

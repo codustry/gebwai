@@ -23,7 +23,7 @@ services:
         - action: rebuild
           path: ./Backend/Python/pyproject.toml
     environment:
-      GEBWAI_RELOAD: "True"
+      BACKEND_RELOAD: "True"
 
   db:
     ports:

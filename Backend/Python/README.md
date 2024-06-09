@@ -9,7 +9,7 @@ tool.
 
 To run the project use this set of commands:
 
-```bash
+```bash {"id":"01HZZ08XSY4PS366JPX48QK98D"}
 poetry install
 poetry run python -m gebwai
 ```
@@ -24,14 +24,14 @@ You can read more about poetry here: https://python-poetry.org/
 
 You can start the project with docker using this command:
 
-```bash
+```bash {"id":"01HZZ08XSY4PS366JPX6AX7MG3"}
 docker-compose -f deploy/docker-compose.yml --project-directory . up --build
 ```
 
 If you want to develop in docker with autoreload add `-f deploy/docker-compose.dev.yml` to your docker command.
 Like this:
 
-```bash
+```bash {"id":"01HZZ08XSY4PS366JPX9V15TTZ"}
 docker-compose -f deploy/docker-compose.yml -f deploy/docker-compose.dev.yml --project-directory . up --build
 ```
 
@@ -39,13 +39,13 @@ This command exposes the web application on port 8000, mounts current directory 
 
 But you have to rebuild image every time you modify `poetry.lock` or `pyproject.toml` with this command:
 
-```bash
+```bash {"id":"01HZZ08XSY4PS366JPXCY1N74A"}
 docker-compose -f deploy/docker-compose.yml --project-directory . build
 ```
 
 ## Project structure
 
-```bash
+```bash {"id":"01HZZ08XSY4PS366JPXDKBXXGK"}
 $ tree "gebwai"
 gebwai
 ├── conftest.py  # Fixtures for all tests.
@@ -79,13 +79,15 @@ variable to configure the value. This behaviour can be changed by overriding `en
 in `gebwai.settings.Settings.Config`.
 
 An example of .env file:
-```bash
-GEBWAI_RELOAD="True"
-GEBWAI_PORT="8000"
-GEBWAI_ENVIRONMENT="dev"
+
+```bash {"id":"01HZZ08XSY4PS366JPXHEDWPP1"}
+BACKEND__RELOAD="True"
+BACKEND__PORT="8000"
+BACKEND__ENVIRONMENT="dev"
 ```
 
 You can read more about BaseSettings class here: https://pydantic-docs.helpmanual.io/usage/settings/
+
 ## OpenTelemetry
 
 If you want to start your project with OpenTelemetry collector
@@ -93,7 +95,7 @@ you can add `-f ./deploy/docker-compose.otlp.yml` to your docker command.
 
 Like this:
 
-```bash
+```bash {"id":"01HZZ08XSY4PS366JPXMK0STR0"}
 docker-compose -f deploy/docker-compose.yml -f deploy/docker-compose.otlp.yml --project-directory . up
 ```
 
@@ -109,7 +111,8 @@ You can read more about OpenTelemetry here: https://opentelemetry.io/
 ## Pre-commit
 
 To install pre-commit simply run inside the shell:
-```bash
+
+```bash {"id":"01HZZ08XSY4PS366JPXQME6SBE"}
 pre-commit install
 ```
 
@@ -117,18 +120,19 @@ pre-commit is very useful to check your code before publishing it.
 It's configured using .pre-commit-config.yaml file.
 
 By default it runs:
+
 * black (formats your code);
 * mypy (validates types);
 * isort (sorts imports in all files);
 * flake8 (spots possible bugs);
-
 
 You can read more about pre-commit here: https://pre-commit.com/
 
 ## Migrations
 
 If you want to migrate your database, you should run following commands:
-```bash
+
+```bash {"id":"01HZZ08XSY4PS366JPXTJA5G79"}
 # To run all migrations until the migration with revision_id.
 alembic upgrade "<revision_id>"
 
@@ -139,7 +143,8 @@ alembic upgrade "head"
 ### Reverting migrations
 
 If you want to revert migrations, you should run:
-```bash
+
+```bash {"id":"01HZZ08XSZJ3AC2CRXBKDN1RR0"}
 # revert all migrations up to: revision_id.
 alembic downgrade <revision_id>
 
@@ -150,7 +155,8 @@ alembic downgrade <revision_id>
 ### Migration generation
 
 To generate migrations you should run:
-```bash
+
+```bash {"id":"01HZZ08XSZJ3AC2CRXBMG9MR36"}
 # For automatic change detection.
 alembic revision --autogenerate
 
@@ -158,26 +164,27 @@ alembic revision --autogenerate
 alembic revision
 ```
 
-
 ## Running tests
 
 If you want to run it in docker, simply run:
 
-```bash
+```bash {"id":"01HZZ08XSZJ3AC2CRXBNDB9FH3"}
 docker-compose -f deploy/docker-compose.yml -f deploy/docker-compose.dev.yml --project-directory . run --build --rm api pytest -vv .
 docker-compose -f deploy/docker-compose.yml -f deploy/docker-compose.dev.yml --project-directory . down
 ```
 
 For running tests on your local machine.
+
 1. you need to start a database.
 
 I prefer doing it with docker:
-```
+
+```sh {"id":"01HZZ08XSZJ3AC2CRXBQXS6RV5"}
 docker run -p "5432:5432" -e "POSTGRES_PASSWORD=gebwai" -e "POSTGRES_USER=gebwai" -e "POSTGRES_DB=gebwai" postgres:13.8-bullseye
 ```
 
-
 2. Run the pytest.
-```bash
+
+```bash {"id":"01HZZ08XSZJ3AC2CRXBVV1X8X6"}
 pytest -vv .
 ```

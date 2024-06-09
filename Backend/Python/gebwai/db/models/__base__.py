@@ -38,7 +38,3 @@ class TimestampModel(SQLModel):
 
 class SoftDeleteModel(SQLModel):
     deleted_at: datetime = Field(nullable=True)
-
-
-class MissingModel(SQLModel):
-    missing_at: datetime = Field(nullable=True)

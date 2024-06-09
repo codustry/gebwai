@@ -6,17 +6,17 @@ services:
       context: .
       dockerfile: ./deploy/Dockerfile
       target: prod
-    image: gebwai:${GEBWAI_VERSION:-latest}
+    image: gebwai:${BACKEND_VERSION:-latest}
     restart: always
     env_file:
       - .env
     labels:
       # Enables traefik for this container.
       - traefik.enable=true
-      - traefik.http.routers.gebwai.rule=Host(`${GEBWAI_TRAEFIK_HOST:-gebwai.localhost}`)
+      - traefik.http.routers.gebwai.rule=Host(`${BACKEND_TRAEFIK_HOST:-gebwai.localhost}`)
       - traefik.http.routers.gebwai.entrypoints=http
       - traefik.http.routers.gebwai.service=gebwai
-      - traefik.http.services.gebwai.loadbalancer.server.port=${GEBWAI_PORT:-8000}
+      - traefik.http.services.gebwai.loadbalancer.server.port=${BACKEND_PORT:-8000}
     networks:
       - default
       - traefik-shared
@@ -24,12 +24,12 @@ services:
       db:
         condition: service_healthy
     environment:
-      GEBWAI_HOST: 0.0.0.0
-      GEBWAI_DB_HOST: gebwai-db
-      GEBWAI_DB_PORT: 5432
-      GEBWAI_DB_USER: gebwai
-      GEBWAI_DB_PASS: gebwai
-      GEBWAI_DB_BASE: gebwai
+      BACKEND_HOST: 0.0.0.0
+      BACKEND_DB_HOST: gebwai-db
+      BACKEND_DB_PORT: 5432
+      BACKEND_DB_USER: gebwai
+      BACKEND_DB_PASS: gebwai
+      BACKEND_DB_BASE: gebwai
 
   taskiq-worker:
     <<: *main_app
@@ -56,15 +56,15 @@ services:
       retries: 40
 
   migrator:
-    image: gebwai:${GEBWAI_VERSION:-latest}
+    image: gebwai:${BACKEND_VERSION:-latest}
     restart: "no"
     command: alembic upgrade head
     environment:
-      GEBWAI_DB_HOST: gebwai-db
-      GEBWAI_DB_PORT: 5432
-      GEBWAI_DB_USER: gebwai
-      GEBWAI_DB_PASS: gebwai
-      GEBWAI_DB_BASE: gebwai
+      BACKEND_DB_HOST: gebwai-db
+      BACKEND_DB_PORT: 5432
+      BACKEND_DB_USER: gebwai
+      BACKEND_DB_PASS: gebwai
+      BACKEND_DB_BASE: gebwai
     depends_on:
       db:
         condition: service_healthy

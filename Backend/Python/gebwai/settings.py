@@ -56,7 +56,6 @@ class Settings(BaseSettings):
     opentelemetry_endpoint: Optional[str] = None
 
     # LINE
-    LINE_SECRET: str
     LINE_ACCESS_TOKEN: str
     LINE_CHANNEL_SECRET: str
 
@@ -78,7 +77,7 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_file=".env",
-        env_prefix="GEBWAI_",
+        env_prefix="BACKEND_",
         env_file_encoding="utf-8",
     )
 

@@ -77,9 +77,9 @@ filterwarnings = [
     "ignore:.*unclosed.*:ResourceWarning",
 ]
 env = [
-    "GEBWAI_ENVIRONMENT=pytest",
-    "GEBWAI_DB_BASE=gebwai_test",
-    "GEBWAI_SENTRY_DSN=",
+    "BACKEND_ENVIRONMENT=pytest",
+    "BACKEND_DB_BASE=BACKEND_test",
+    "BACKEND_SENTRY_DSN=",
 ]
 
 [fastapi-template.options]

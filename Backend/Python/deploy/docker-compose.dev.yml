@@ -12,7 +12,7 @@ services:
     - .:/app/src/
     environment:
       # Enables autoreload.
-      GEBWAI_RELOAD: "True"
+      BACKEND_RELOAD: "True"
 
   taskiq-worker:
     volumes:

@@ -31,6 +31,7 @@ class ComposeCmd:
     def __init__(self, verb: str = "up", dryrun: bool = False, dev: bool = False, detach: bool = False):
         self.compose_files = [
             "Deployment/compose.yml",
+            "Deployment/compose.tunnel.yml"
         ]
         if dev:
             self.compose_files.append("Deployment/compose.dev.yml")
