@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# mise description="abc"
+set -euxo pipefail
+
