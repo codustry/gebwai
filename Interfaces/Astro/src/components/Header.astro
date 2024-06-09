@@ -1,6 +1,7 @@
 ---
+import { Icon } from 'astro-icon/components'
 ---
-<header class="navbar bg-base-100">
+<!-- <header class="navbar bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
       <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -34,7 +35,7 @@
       </ul>
     </div>
     <a class="btn btn-ghost normal-case text-xl" href="/">
-      <img src="https://ik.imagekit.io/codustry/gebwai/webapp/09122021/logo-text_E033c2W5g.svg?updatedAt=1631423536990" alt="Gebwai Logo" height="40px" />
+      <object type="image/svg+xml" data="/webapp/logo_text.svg" width="auto" height="40">Gebwai Logo</object>
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
@@ -66,16 +67,13 @@
     </ul>
   </div>
   <div class="navbar-end">
-    <a class="btn btn-outline" href="https://lin.ee/BJ4dbWO" target="_blank">
-      <img src="https://ik.imagekit.io/codustry/gebwai/webapp/09122021/icon-line_0rpRKefoO.svg?updatedAt=1631423624423" height="20px" class="mr-2" /> 
-      เพิ่มเพื่อน
-    </a>
+    
   </div>
-</header>
+</header> -->
 
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    <div class="dropdown">
+    <!-- <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </div>
@@ -90,10 +88,12 @@
         </li>
         <li><a>Item 3</a></li>
       </ul>
-    </div>
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+    </div> -->
+    <a class="btn btn-ghost normal-case text-xl" href="/">
+      <object type="image/svg+xml" data="/webapp/logo_text.svg" width="auto" height="40">Gebwai Logo</object>
+    </a>
   </div>
-  <div class="navbar-center hidden lg:flex">
+  <!-- <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
       <li><a>Item 1</a></li>
       <li>
@@ -107,8 +107,15 @@
       </li>
       <li><a>Item 3</a></li>
     </ul>
-  </div>
+  </div> -->
   <div class="navbar-end">
-    <a class="btn">Button</a>
+    <a class="btn bg-white hover:bg-white text-black hover:border-black group" href="https://github.com/Codustry/gebwai" target="_blank">
+      <Icon class="text-2xl group-hover:mr-2" name="mdi:github" />
+      <span class="text-lg group-hover:inline hidden transition-all duration-300 ease-in-out translate-x-4 group-hover:translate-x-0">ดู/แก้ Code</span>
+    </a>
+    <a class="btn bg-white hover:bg-white text-LINE   hover:border-LINE group" href="https://lin.ee/BJ4dbWO" target="_blank">
+      <Icon class="text-2xl group-hover:mr-2" name="cib:line" />
+      <span class="text-lg group-hover:inline hidden transition-all duration-300 ease-in-out translate-x-4 group-hover:translate-x-0">เพิ่มเพื่อน</span>
+    </a>
   </div>
 </div>
