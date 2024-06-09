@@ -4,6 +4,7 @@
         "Svelte",
         "Astro",
         "Database",
-        "Design"
+        "Design",
+        "Deployment"
     ]
 }
