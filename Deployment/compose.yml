@@ -5,8 +5,9 @@ services:
   web:
     build: 
       context: Interfaces/Astro
+      target: prod
     ports:
-      - "80:80"
+      - "4321:4321"
 
   db:
     image: postgres:16
@@ -23,12 +24,14 @@ services:
       interval: 2s
       timeout: 3s
       retries: 40
+    ports:
+      - "5432:5432"
 
   api:
     build:
-      context: Backend/FastAPI-Python
+      context: Backend/Python
       target: prod
-    image: gebwai:${GEBWAI_VERSION:-latest}
+    image: gebwai-python:${GEBWAI_VERSION:-latest}
     restart: always
     env_file:
     - .env

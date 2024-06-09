@@ -55,6 +55,11 @@ class Settings(BaseSettings):
     # E.G. http://localhost:4317
     opentelemetry_endpoint: Optional[str] = None
 
+    # LINE
+    LINE_SECRET: str
+    LINE_ACCESS_TOKEN: str
+    LINE_CHANNEL_SECRET: str
+
     @property
     def db_url(self) -> URL:
         """

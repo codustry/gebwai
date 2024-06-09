@@ -33,6 +33,8 @@ loguru = "^0.7.0"
 taskiq = "^0"
 taskiq-fastapi = "^0"
 pyzmq = "^25"
+sqlmodel = "^0.0.19"
+line-bot-sdk = "^3.11.0"
 
 
 [tool.poetry.dev-dependencies]

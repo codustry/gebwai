@@ -1,18 +1,30 @@
 services:
+  web:
+    build: 
+      target: dev
+    develop:
+      watch:
+        - action: sync
+          path: ./Interfaces/Astro
+          target: /app
+        - action: rebuild
+          path: ./Interfaces/Astro/package.json
+
   api:
     ports:
-      # Exposes application port.
     - "8000:8000"
     build:
       target: dev
-    volumes:
-      # Adds current directory as volume.
-    - .:/app/src/
+    develop:
+      watch:
+        - action: sync
+          path: ./Backend/Python/gebwai
+          target: /app/src/gebwai
+        - action: rebuild
+          path: ./Backend/Python/pyproject.toml
     environment:
-      # Enables autoreload.
       GEBWAI_RELOAD: "True"
 
   db:
     ports:
       - "5432:5432"
-
